@@ -102,6 +102,4 @@ Here is a general guide for deploying to **Vercel**:
       - **Name:** `VITE_GEMINI_API_KEY`
       - **Value:** Paste your actual Gemini API key here.
 
-4.  **Deploy:** Click the "Deploy" button. Vercel will build your project and deploy it to a public URL.
-
 ---
