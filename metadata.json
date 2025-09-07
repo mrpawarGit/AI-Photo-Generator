@@ -1,0 +1,5 @@
+{
+  "name": "AI Image Generator",
+  "description": "Upload a single photo and provide a prompt to generate five unique images using AI. Users can view, download, and refine their creations.",
+  "requestFramePermissions": []
+}
