@@ -105,7 +105,3 @@ Here is a general guide for deploying to **Vercel**:
 4.  **Deploy:** Click the "Deploy" button. Vercel will build your project and deploy it to a public URL.
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details. _(Suggestion: Create a LICENSE.md file with the MIT license text if you choose this license)_.
