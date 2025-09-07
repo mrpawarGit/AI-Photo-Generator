@@ -1,4 +1,4 @@
-# AI Photo Generator - [🔗Live](https://aiphotgen-phi-two.vercel.app/)
+# ![alt text](AI-Photo-Generator/materials/logo.png)AI Photo Generator - [🔗Live](https://aiphotgen-phi-two.vercel.app/)
 
 This is a modern, web-based AI image generation tool built with React, Vite, TypeScript, and the Google Gemini API. It allows users to upload a source photo, provide a descriptive prompt, and generate unique, high-quality images. The application features an advanced inpainting tool for refining specific areas of an image, giving users precise creative control.
 
