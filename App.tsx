@@ -163,24 +163,24 @@ const App: React.FC = () => {
     !originalImage || !prompt || isLoading || remixingIndex !== null;
 
   return (
-    <div className="min-h-screen font-sans p-4 sm:p-6 lg:p-8 flex flex-col items-center">
+    <div className="min-h-screen font-sans p-4 sm:p-6 lg:p-8 flex flex-col items-center bg-gradient-to-br from-gray-900 to-gray-800">
       {isLoading && <Loader />}
       {previewImageUrl && (
         <ImagePreviewModal src={previewImageUrl} onClose={handleClosePreview} />
       )}
 
-      <div className="w-full max-w-3xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
             AI Photo Generator
           </h1>
-          <p className="mt-4 text-lg text-slate-400">
+          <p className="mt-4 text-lg text-slate-300">
             Turn your photo into stunning, unique images.
           </p>
         </header>
 
         <main className="flex flex-col gap-10">
-          <div className="bg-gray-900/50 backdrop-blur-xl rounded-2xl shadow-2xl p-6 md:p-8 border border-cyan-300/20">
+          <div className="bg-gray-900/70 backdrop-blur-xl rounded-2xl shadow-2xl p-6 md:p-8 border border-cyan-300/20">
             <div className="flex flex-col space-y-6">
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">
@@ -204,13 +204,13 @@ const App: React.FC = () => {
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder="e.g., A cyberpunk hacker in a neon-lit alley..."
                   rows={3}
-                  className="w-full bg-slate-900/80 border border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-colors placeholder:text-slate-500"
+                  className="w-full bg-slate-900/80 border border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-colors placeholder:text-slate-500 text-slate-200"
                 />
               </div>
               <button
                 onClick={handleGenerate}
                 disabled={isGenerateDisabled}
-                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed text-slate-900 font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 focus:outline-none focus:ring-4 focus:ring-cyan-300/50 hover-glow"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 focus:outline-none focus:ring-4 focus:ring-cyan-300/50 hover-glow"
               >
                 <SparklesIcon />
                 {isLoading ? "Generating..." : "Generate 5 Images"}
@@ -225,15 +225,17 @@ const App: React.FC = () => {
 
           {generatedImages.length > 0 && !isLoading && (
             <div className="animate-fade-in">
-              <div className="text-center mb-6">
+              <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-slate-100">
                   Your Results
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-slate-300 mt-2">
                   Click an image to refine, preview, or download.
                 </p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+
+              {/* Increased spacing between images */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                 {generatedImages.map((imgSrc, index) => (
                   <GeneratedImage
                     key={`${index}-${imgSrc.slice(-10)}`}
@@ -251,8 +253,8 @@ const App: React.FC = () => {
           )}
 
           {selectedImageIndex !== null && (
-            <div className="p-6 bg-gray-900/50 backdrop-blur-xl rounded-2xl shadow-2xl border border-purple-400/20 animate-fade-in">
-              <div className="flex justify-between items-center mb-4">
+            <div className="p-6 bg-gray-900/70 backdrop-blur-xl rounded-2xl shadow-2xl border border-purple-400/20 animate-fade-in">
+              <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl font-bold text-slate-100">
                   Refine Selected Image
                 </h3>
@@ -264,12 +266,12 @@ const App: React.FC = () => {
                   <XIcon className="w-6 h-6 text-slate-400" />
                 </button>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <ImageEditor
                   src={generatedImages[selectedImageIndex]}
                   onMaskChange={setMaskBase64}
                 />
-                <div className="flex flex-col space-y-4 justify-center">
+                <div className="flex flex-col space-y-6 justify-center">
                   <div>
                     <label
                       htmlFor="refine-prompt"
@@ -287,7 +289,7 @@ const App: React.FC = () => {
                           : "e.g., Change jacket to blue"
                       }
                       rows={3}
-                      className="w-full bg-slate-900/80 border border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors placeholder:text-slate-500"
+                      className="w-full bg-slate-900/80 border border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors placeholder:text-slate-500 text-slate-200"
                     />
                   </div>
                   <button
@@ -295,7 +297,7 @@ const App: React.FC = () => {
                     disabled={
                       !refinePrompt || isLoading || remixingIndex !== null
                     }
-                    className="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 focus:outline-none focus:ring-4 focus:ring-purple-300/50"
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-700 hover:to-indigo-800 disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100 focus:outline-none focus:ring-4 focus:ring-purple-300/50"
                   >
                     <SparklesIcon />
                     Recreate Image
