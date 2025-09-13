@@ -11,7 +11,7 @@ This is a modern, web-based AI image generation tool built with React, Vite, Typ
 - **Interactive Refinement**: Select any generated image to perform targeted edits.
 - **Inpainting with Masking**: A powerful brush tool allows users to "paint" over a specific area of an image they wish to change, applying the refinement prompt only to that region.
 - **Full-Screen Preview**: View generated images in a high-resolution, full-screen modal.
-- **Download Results**: Easily save your favorite creations with the correct file extension.
+- **Download Results**: Easily save your favourite creations with the correct file extension.
 - **Responsive & Modern UI**: A sleek, "glassmorphism" interface with smooth animations, built with Tailwind CSS.
 
 ---
